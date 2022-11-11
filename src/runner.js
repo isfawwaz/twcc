@@ -22,6 +22,7 @@ const task = new Listr([
           flattenMapsAfter: argv['flatten-maps-after'],
           preserveKeys: argv['preserve-keys'],
           onlyIncludeKeys: argv['only-include-keys'],
+          fileSplitting: argv.split,
         });
       } catch (e) {
         log(error(e.message));
@@ -36,9 +37,16 @@ const task = new Listr([
         ctx.converter
           .writeToFile()
           .then((options) => {
-            log(
-              chalk.bold.bgGreen(`\n Config file written successfully to ${options.destination} `),
-            );
+            if (ctx.argv.split) {
+              log(chalk.bold(`\n Config file written successfully to:`));
+              log(options.destination);
+            } else {
+              log(
+                chalk.bold.bgGreen(
+                  `\n Config file written successfully to ${options.destination} `,
+                ),
+              );
+            }
           })
           .catch((e) => {
             log(error(e.message));
