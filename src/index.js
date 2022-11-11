@@ -5,13 +5,8 @@ const { resolveConfig } = require('./converters/utils');
 const chalk = require('chalk');
 
 const allowedFormatsMap = {
-  // stylus: converters.Stylus,
-  // styl: converters.Stylus,
-  // sass: converters.Sass,
-  // scss: converters.Scss,
-  // less: converters.Less,
-  // json: converters.JSON,
   css: converters.Css,
+  scss: converters.Scss,
 };
 
 /**
