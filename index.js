@@ -15,16 +15,17 @@ const argv = yargs(hideBin(process.argv))
   })
   .option('destination', {
     alias: 'd',
-    describe: 'Path to save Sass config file to',
+    describe:
+      'Path to save converted config file to, if split is true then this will be folder name',
     type: 'string' /* array | boolean | string */,
     nargs: 1,
     demand: true,
   })
   .option('format', {
     alias: 'f',
-    describe: 'Format to generate - sass,less,stylus',
+    describe: 'Format to generate',
     type: 'string',
-    choices: ['sass', 'scss', 'less', 'styl', 'css', 'json'],
+    choices: ['css'],
     nargs: 1,
     demand: true,
   })
@@ -66,6 +67,12 @@ const argv = yargs(hideBin(process.argv))
     coerce: (array = []) => {
       return array.flatMap((v) => v.split(','));
     },
+  })
+  .option('split', {
+    describe: 'File splitting',
+    type: 'boolean' /* array | boolean | string */,
+    boolean: false,
+    nargs: 1,
   }).argv;
 
 runner(argv);
