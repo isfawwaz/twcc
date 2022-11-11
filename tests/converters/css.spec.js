@@ -14,7 +14,7 @@ describe('Css converter', () => {
     });
   });
 
-  it('converts flat and nested, with the same result', () => {
+  it('Converts flat and nested, with the same result', () => {
     let converter = new CssConverter({
       config: resolveConfig(testConfig),
       flat: true,
@@ -44,6 +44,34 @@ describe('Css converter', () => {
     const converter = new CssConverter({
       config: resolveConfig(testConfig),
       prefix: 'tw',
+    });
+    expect(converter.convert()).toMatchSnapshot();
+  });
+
+  it('Converts splitted flat and nested, with the same result', () => {
+    let converter = new CssConverter({
+      config: resolveConfig(testConfig),
+      flat: true,
+      fileSplitting: true,
+    });
+    const flatResult = converter.convert();
+
+    converter = new CssConverter({
+      config: resolveConfig(testConfig),
+      flat: false,
+      fileSplitting: true,
+    });
+
+    const nestedResult = converter.convert();
+
+    expect(flatResult.toString()).toBe(nestedResult.toString());
+  });
+
+  it('Converts splitted to nested map with prefix', () => {
+    const converter = new CssConverter({
+      config: resolveConfig(testConfig),
+      prefix: 'tw',
+      fileSplitting: true,
     });
     expect(converter.convert()).toMatchSnapshot();
   });
