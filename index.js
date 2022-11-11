@@ -2,6 +2,7 @@
 
 const yargs = require('yargs')
 const { hideBin } = require('yargs/helpers')
+const runner = require('./src/runner')
 
 const argv = yargs(hideBin(process.argv))
   .usage('Usage: $0 -config [relative_path] -destination [relative_path]')
@@ -67,4 +68,4 @@ const argv = yargs(hideBin(process.argv))
     }
   }).argv
 
-console.log({ argv })
+runner(argv)
