@@ -176,10 +176,12 @@ class Converter {
       // do file splitting
       const bufferArray = {};
       const themes = {};
-      Object.keys(this.fileSplittingConfig()).forEach((key) => {
-        themes[key] = [];
-        bufferArray[key] = this.prefixContent;
-      });
+      Object.keys(this.fileSplittingConfig())
+        .sort()
+        .forEach((key) => {
+          themes[key] = [];
+          bufferArray[key] = this.prefixContent;
+        });
       for (const setting in this.theme) {
         if (this.theme.hasOwnProperty(setting) && this._isSettingEnabled(setting)) {
           const data = this.theme[setting];
