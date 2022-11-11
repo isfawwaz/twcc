@@ -2,6 +2,7 @@ const fse = require('fs-extra');
 const path = require('path');
 const converters = require('./converters');
 const { resolveConfig } = require('./converters/utils');
+const chalk = require('chalk');
 
 const allowedFormatsMap = {
   // stylus: converters.Stylus,
@@ -45,12 +46,11 @@ class ConvertTo {
    * @returns {string}
    */
   convert() {
-    let buffer = '';
-    if (this.options.format !== 'json') {
-      buffer = `/* Converted Tailwind Config to ${this.options.format} */`;
-    }
-    buffer += this.converterInstance.convert();
-    return buffer;
+    return this.converterInstance.convert();
+  }
+
+  fileSplittingConfig() {
+    return this.converterInstance.fileSplittingConfig();
   }
 
   /**
@@ -58,10 +58,10 @@ class ConvertTo {
    * @returns {Promise}
    */
   writeToFile() {
-    const buffer = this.convert();
-    return this._writeFile(buffer, {
+    return this._writeFile(this.convert(), {
       destination: this.options.destination,
       format: this.converterInstance.format,
+      split: this.options.fileSplitting,
     });
   }
 
@@ -73,16 +73,56 @@ class ConvertTo {
    * @private
    * @return {Promise}
    */
-  _writeFile(data, { destination, format }) {
+  _writeFile(data, { destination, format, split = false }) {
     // If destination ends with a slash, we append a name to the file
     if (destination.endsWith(path.sep)) destination += 'tailwind-config';
-    const endPath = `${destination}.${format}`;
-    const file = path.join(process.cwd(), endPath);
-    return fse.outputFile(file, data).then(() => {
-      return {
-        destination: endPath,
-      };
-    });
+    if (split) {
+      const config = this.fileSplittingConfig();
+      const promise = new Promise(async (resolve, reject) => {
+        try {
+          const d = [];
+          // write file
+          for (const file in data) {
+            /* eslint-disable no-await-in-loop */
+            if (data.hasOwnProperty(file)) {
+              const buffer = data[file];
+              const endPath = `${file}.${format}`;
+              const fileUrl = path.join(process.cwd(), destination, endPath);
+
+              await fse.outputFile(fileUrl, buffer);
+              let includes = '';
+              if (config.hasOwnProperty(file)) {
+                includes = chalk.gray(`\n   - ${config[file].join('\n   - ')}`);
+              }
+              const text = chalk.bold.green([destination, endPath].join('/'));
+              d.push(`${text}${includes}`);
+            }
+          }
+          resolve({
+            destination: ` - ${d.join(' \n - ')}`,
+          });
+        } catch (e) {
+          reject(e);
+        }
+      });
+      // asd
+      return promise;
+    } else {
+      let buffer = '';
+      if (this.options.format !== 'json') {
+        buffer = `/* Converted Tailwind Config to ${this.options.format} */`;
+      }
+      buffer += data;
+
+      const endPath = `${destination}.${format}`;
+      const file = path.join(process.cwd(), endPath);
+
+      return fse.outputFile(file, buffer).then(() => {
+        return {
+          destination: endPath,
+        };
+      });
+    }
   }
 }
 

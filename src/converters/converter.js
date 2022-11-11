@@ -1,4 +1,4 @@
-const { isObject, sanitizeKey, indentWith, camelToString } = require('./utils');
+const { isObject, sanitizeKey, indentWith, camelToString, getKeyByValue } = require('./utils');
 
 const INDENT_BY = 2;
 
@@ -160,6 +160,7 @@ class Converter {
 
     this.flat = opts.flat;
     this.prefix = opts.prefix || '';
+    this.fileSplitting = opts.fileSplitting;
     if (opts.quotedKeys) this.quotedKeys = opts.quotedKeys;
     if (typeof opts.flattenMapsAfter !== 'undefined') this.flattenMapsAfter = opts.flattenMapsAfter;
     if (typeof opts.preserveKeys !== 'undefined') this.preserveKeys = opts.preserveKeys;
@@ -171,24 +172,57 @@ class Converter {
    * @returns {string}
    */
   convert() {
-    let setting;
-    let buffer = this.prefixContent;
-    for (setting in this.theme) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (this.theme.hasOwnProperty(setting) && this._isSettingEnabled(setting)) {
-        const data = this.theme[setting];
-
-        const body = this.flat
-          ? this._convertObjectToVar(setting, data)
-          : this._convertObjectToMap(setting, data);
-
-        buffer += '\n';
-        buffer += body;
+    if (this.fileSplitting) {
+      // do file splitting
+      const bufferArray = {};
+      const themes = {};
+      Object.keys(this.fileSplittingConfig()).forEach((key) => {
+        themes[key] = [];
+        bufferArray[key] = this.prefixContent;
+      });
+      for (const setting in this.theme) {
+        if (this.theme.hasOwnProperty(setting) && this._isSettingEnabled(setting)) {
+          const data = this.theme[setting];
+          const key = getKeyByValue(this.fileSplittingConfig(), setting);
+          if (themes.hasOwnProperty(key)) {
+            const body = this.flat
+              ? this._convertObjectToVar(setting, data)
+              : this._convertObjectToMap(setting, data);
+            themes[key].push(body);
+          }
+        }
       }
-    }
+      for (const theme in themes) {
+        if (themes.hasOwnProperty(theme)) {
+          const list = themes[theme];
+          list.sort();
+          list.forEach((body) => {
+            bufferArray[theme] += '\n';
+            bufferArray[theme] += body;
+          });
+          bufferArray[theme] += this.suffixContent;
+        }
+      }
+      return bufferArray;
+    } else {
+      let buffer = this.prefixContent;
+      for (const setting in this.theme) {
+        // eslint-disable-next-line no-prototype-builtins
+        if (this.theme.hasOwnProperty(setting) && this._isSettingEnabled(setting)) {
+          const data = this.theme[setting];
 
-    buffer += this.suffixContent;
-    return buffer;
+          const body = this.flat
+            ? this._convertObjectToVar(setting, data)
+            : this._convertObjectToMap(setting, data);
+
+          buffer += '\n';
+          buffer += body;
+        }
+      }
+
+      buffer += this.suffixContent;
+      return buffer;
+    }
   }
 
   /**
@@ -420,6 +454,114 @@ class Converter {
     if (this.preserveKeys.length && this.preserveKeys.includes(key)) return true;
     if (!corePlugins) return true;
     return Array.isArray(corePlugins) ? corePlugins.includes(key) : corePlugins[key] !== false;
+  }
+
+  _isFileSplitting() {
+    return this.fileSplitting;
+  }
+
+  fileSplittingConfig() {
+    return {
+      layouts: ['aspectRatio', 'container', 'columns', 'zIndex', 'screens', 'supports'],
+      grids: [
+        'flex',
+        'flexBasic',
+        'flexGrow',
+        'flexShrink',
+        'gap',
+        'gridAutoColumns',
+        'gridAutoRows',
+        'gridColumn',
+        'gridColumnEnd',
+        'gridColumnStart',
+        'gridRow',
+        'gridRowStart',
+        'gridRowEnd',
+        'gridTemplateColumns',
+        'gridTemplateRows',
+        'order',
+      ],
+      spacings: ['spacing', 'padding', 'margin', 'space'],
+      sizing: ['width', 'minWidth', 'maxWidth', 'height', 'minHeight', 'maxHeight'],
+      typographies: [
+        'colors',
+        'fontFamily',
+        'letterSpacing',
+        'lineHeight',
+        'listStyleType',
+        'textColor',
+        'textDecorationColor',
+        'textDecorationThickness',
+        'textUnderlineOffset',
+        'textIndent',
+        'textOpacity',
+      ],
+      backgrounds: [
+        'backgroundColor',
+        'backgroundImage',
+        'backgroundOpacity',
+        'backgroundPosition',
+        'backgroundSize',
+        'gradientColorStops',
+      ],
+      borders: [
+        'borderColor',
+        'borderOpacity',
+        'borderRadius',
+        'borderWidth',
+        'divideColor',
+        'divideOpacity',
+        'divideWidth',
+        'outlineColor',
+        'outlineOffset',
+        'outlineWidth',
+        'ringColor',
+        'ringOffsetColor',
+        'ringOffsetWidth',
+        'ringOpacity',
+        'ringWidth',
+      ],
+      effetcs: ['boxShadow', 'boxShadowColor', 'opacity'],
+      filters: [
+        'blur',
+        'brightness',
+        'contrast',
+        'dropShadow',
+        'grayscale',
+        'invert',
+        'saturate',
+        'sepia',
+        'backdropBlur',
+        'backdropBrightness',
+        'backdropContrast',
+        'backdropGrayscale',
+        'backdropHueRotate',
+        'backdropInvert',
+        'backdropOpacity',
+        'backdropSaturate',
+        'backdropSepia',
+      ],
+      tables: ['borderSpacing'],
+      transitions: [
+        'transitionDelay',
+        'transitionDuration',
+        'transitionProperty',
+        'transitionTimingFunction',
+      ],
+      animations: ['animation', 'keyframes'],
+      transforms: ['scale', 'rotate', 'translate', 'skew', 'transformOrigin'],
+      interactivities: [
+        'willChange',
+        'caretColor',
+        'accentColor',
+        'cursor',
+        'objectPosition',
+        'scrollMargin',
+        'scrollPadding',
+      ],
+      svgs: ['fill', 'stroke', 'strokeWidth'],
+      others: ['aria', 'content', 'inset', 'placeholderColor', 'placeholderOpacity'],
+    };
   }
 }
 
