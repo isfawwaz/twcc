@@ -1,0 +1,15 @@
+{
+  "projectName": "twcc",
+  "projectOwner": "isfawwaz",
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "repoHost": "https://github.com",
+  "repoType": "github",
+  "skipCi": false,
+  "files": [
+    "README.md"
+  ],
+  "contributors": []
+}

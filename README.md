@@ -21,7 +21,9 @@
 [![npm](https://img.shields.io/npm/v/twcc)](https://www.npmjs.com/package/twcc/v/latest)
 [![npm downloads](https://img.shields.io/npm/dw/twcc)](https://www.npmjs.com/package/twcc/v/latest)
 [![License](https://img.shields.io/github/license/isfawwaz/twcc)](https://github.com/isfawwaz/twcc/blob/main/LICENSE)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![GitHub contributors (via allcontributors.org)](https://img.shields.io/github/all-contributors/isfawwaz/twcc/main)](https://github.com/isfawwaz/twcc#contributors)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <!-- prettier-ignore-end -->
 
@@ -34,6 +36,15 @@
 ## Contributors
 
 [\[Back to the Table of Contents\] ↑](#toc)
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
