@@ -1,7 +1,7 @@
-const fse = require('fs-extra')
-const path = require('path')
-const converters = require('./converters')
-const { resolveConfig } = require('./converters/utils')
+const fse = require('fs-extra');
+const path = require('path');
+const converters = require('./converters');
+const { resolveConfig } = require('./converters/utils');
 
 const allowedFormatsMap = {
   // stylus: converters.Stylus,
@@ -10,8 +10,8 @@ const allowedFormatsMap = {
   // scss: converters.Scss,
   // less: converters.Less,
   // json: converters.JSON,
-  css: converters.Css
-}
+  css: converters.Css,
+};
 
 /**
  * Converts tailwind config into desired format
@@ -27,42 +27,42 @@ class ConvertTo {
    * @param {Boolean} [options.quotedKeys] - Whether SASS keys should be quoted. Both for Sass and SCSS.
    * @param {Number} [options.flattenMapsAfter] - After what nest level, do we want to flatten out nested maps.
    */
-  constructor (options) {
+  constructor(options) {
     // eslint-disable-next-line no-prototype-builtins
     if (!allowedFormatsMap.hasOwnProperty(options.format)) {
-      throw new Error(`${options.format} is not supported. Use ${Object.keys(allowedFormatsMap)}`)
+      throw new Error(`${options.format} is not supported. Use ${Object.keys(allowedFormatsMap)}`);
     }
-    this.options = options
+    this.options = options;
 
-    const Converter = allowedFormatsMap[options.format]
-    const config = resolveConfig(options.config)
+    const Converter = allowedFormatsMap[options.format];
+    const config = resolveConfig(options.config);
 
-    this.converterInstance = new Converter({ ...options, config })
+    this.converterInstance = new Converter({ ...options, config });
   }
 
   /**
    * Converts the config and returns a string with in the new format
    * @returns {string}
    */
-  convert () {
-    let buffer = ''
+  convert() {
+    let buffer = '';
     if (this.options.format !== 'json') {
-      buffer = `/* Converted Tailwind Config to ${this.options.format} */`
+      buffer = `/* Converted Tailwind Config to ${this.options.format} */`;
     }
-    buffer += this.converterInstance.convert()
-    return buffer
+    buffer += this.converterInstance.convert();
+    return buffer;
   }
 
   /**
    * Write Tailwindcss config to file
    * @returns {Promise}
    */
-  writeToFile () {
-    const buffer = this.convert()
+  writeToFile() {
+    const buffer = this.convert();
     return this._writeFile(buffer, {
       destination: this.options.destination,
-      format: this.converterInstance.format
-    })
+      format: this.converterInstance.format,
+    });
   }
 
   /**
@@ -73,17 +73,17 @@ class ConvertTo {
    * @private
    * @return {Promise}
    */
-  _writeFile (data, { destination, format }) {
+  _writeFile(data, { destination, format }) {
     // If destination ends with a slash, we append a name to the file
-    if (destination.endsWith(path.sep)) destination += 'tailwind-config'
-    const endPath = `${destination}.${format}`
-    const file = path.join(process.cwd(), endPath)
+    if (destination.endsWith(path.sep)) destination += 'tailwind-config';
+    const endPath = `${destination}.${format}`;
+    const file = path.join(process.cwd(), endPath);
     return fse.outputFile(file, data).then(() => {
       return {
-        destination: endPath
-      }
-    })
+        destination: endPath,
+      };
+    });
   }
 }
 
-module.exports = ConvertTo
+module.exports = ConvertTo;
