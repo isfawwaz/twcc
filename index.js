@@ -25,7 +25,7 @@ const argv = yargs(hideBin(process.argv))
     alias: 'f',
     describe: 'Format to generate',
     type: 'string',
-    choices: ['css'],
+    choices: ['css', 'scss'],
     nargs: 1,
     demand: true,
   })
