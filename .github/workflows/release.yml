@@ -22,7 +22,7 @@ jobs:
       - uses: ./.github/actions/setup-node
 
       - name: validate (lint)
-        run: yarn lint
+        run: pnpm run lint
   test:
     needs: init
     runs-on: ubuntu-latest
@@ -31,13 +31,10 @@ jobs:
       - uses: ./.github/actions/setup-node
 
       - name: run test
-        run: yarn test --collectCoverage
+        run: pnpm run test --collectCoverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
-
-      - name: test run generator API markdown
-        run: .husky/generate-api-md
 
   release:
     needs:

@@ -24,9 +24,9 @@ runs:
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        cache: yarn
+        cache: pnpm
         node-version: ${{ inputs.node_version }}
 
-    - name: yarn install
+    - name: pnpm install
       shell: bash
-      run: yarn --frozen-lockfile --prefer-offline
+      run: pnpm install --frozen-lockfile --prefer-offline
