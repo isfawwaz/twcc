@@ -2,11 +2,11 @@ name: release
 on:
   push:
     branches:
-      - main
+      - master
       - next
   pull_request:
     branches:
-      - main
+      - master
 jobs:
   init:
     runs-on: ubuntu-latest
@@ -77,7 +77,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GIT_AUTHOR_EMAIL: "isfawwaz@gmail.com"
-          GIT_COMMITTER_EMAIL: "isfawwaz@gmail.com"
-          GIT_AUTHOR_NAME: "isfawwaz"
-          GIT_COMMITTER_NAME: "isfawwaz"
+          GIT_AUTHOR_EMAIL: 'isfawwaz@gmail.com'
+          GIT_COMMITTER_EMAIL: 'isfawwaz@gmail.com'
+          GIT_AUTHOR_NAME: 'isfawwaz'
+          GIT_COMMITTER_NAME: 'isfawwaz'
