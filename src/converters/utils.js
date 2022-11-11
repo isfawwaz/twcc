@@ -35,3 +35,8 @@ function camelToString(key, separator = '-') {
   return result.split(' ').join(separator).toLowerCase();
 }
 module.exports.camelToString = camelToString;
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find((key) => object[key]?.includes(value));
+}
+module.exports.getKeyByValue = getKeyByValue;
