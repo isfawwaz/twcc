@@ -2,11 +2,11 @@ name: release
 on:
   push:
     branches:
-      - main
+      - master
       - next
   pull_request:
     branches:
-      - main
+      - master
 jobs:
   init:
     runs-on: ubuntu-latest
