@@ -3,6 +3,10 @@ name: Setup
 description: Setup Node.js, cache and install dependencies (using pnpm specificly)
 
 inputs:
+  pnpm_version:
+    description: pnpm version
+    required: false
+    default: '7.15.0'
   node_version:
     description: Node.js version
     required: false
@@ -21,6 +25,12 @@ runs:
       run: |
         git config user.email "isfawwaz@gmail.com"
         git config user.name "isfawwaz"
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: ${{ inputs.pnpm_version }}
+
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
