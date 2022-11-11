@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tailwind Options Exporter skips options that are disabled in \`corePlugins\` using the array pattern 1`] = `
-"/* Converted Tailwind Config to css */
+"
 :root {
 --cursor-auto: auto;
 --cursor-default: default;
