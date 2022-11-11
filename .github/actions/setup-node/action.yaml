@@ -1,0 +1,32 @@
+name: Setup
+
+description: Setup Node.js, cache and install dependencies (using pnpm specificly)
+
+inputs:
+  node_version:
+    description: Node.js version
+    required: false
+    default: '16'
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout all commits
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup git user to "isfawwaz"
+      shell: bash
+      run: |
+        git config user.email "isfawwaz@gmail.com"
+        git config user.name "isfawwaz"
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        cache: pnpm
+        node-version: ${{ inputs.node_version }}
+
+    - name: pnpm install
+      shell: bash
+      run: pnpm install --prefer-frozen-lockfile --prefer-offline
