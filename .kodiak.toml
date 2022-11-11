@@ -6,6 +6,7 @@ auto_approve_usernames = ["dependabot"]
 [merge]
 method = "squash"
 prioritize_ready_to_merge = true
+block_on_neutral_required_check_runs = true
 
 [merge.automerge_dependencies]
 usernames = ["dependabot"]
