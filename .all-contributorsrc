@@ -11,5 +11,18 @@
   "files": [
     "README.md"
   ],
-  "contributors": []
+  "contributors": [
+    {
+      "login": "isfawwaz",
+      "name": "Fawwaz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1292165?v=4",
+      "profile": "https://github.com/isfawwaz",
+      "contributions": [
+        "ideas",
+        "infra",
+        "tool",
+        "code"
+      ]
+    }
+  ]
 }
