@@ -9,7 +9,7 @@
   "scripts": {
     "test": "jest --passWithNoTests",
     "format": "prettier --write --ignore-unknown",
-    "lint": "eslint",
+    "lint": "eslint --fix \"*.js\"",
     "prepare": "husky install"
   },
   "keywords": [
@@ -46,11 +46,16 @@
     "@commitlint/prompt": "^17.2.0",
     "@isfawwaz/prettier-config": "^1.0.1",
     "all-contributors-cli": "^6.24.0",
+    "babel-jest": "^29.3.1",
     "commitlint-config-squash-pr": "^1.1.0",
     "eslint": "^8.27.0",
+    "eslint-config-kentcdodds": "^20.4.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-jest": "^27.1.5",
     "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "fs": "0.0.1-security",
     "husky": "^8.0.2",
     "jest": "^29.3.1",
     "lint-staged": "^13.0.3",
@@ -69,8 +74,16 @@
     ]
   },
   "jest": {
+    "rootDir": "./",
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
     "testMatch": [
-      "**/tests/**/*.[jt]s?(x)"
+      "**/tests/**/*.spec.[jt]s?(x)"
     ],
     "testPathIgnorePatterns": [
       "/node_modules/",
