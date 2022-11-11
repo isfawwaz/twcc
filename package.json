@@ -1,0 +1,80 @@
+{
+  "name": "twcc",
+  "version": "1.0.0",
+  "description": "Tailwind cli helper to convert tailwind config to any other config",
+  "main": "index.js",
+  "bin": {
+    "twcc": "index.js"
+  },
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "format": "prettier --write --ignore-unknown",
+    "lint": "eslint",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "twcc",
+    "cli"
+  ],
+  "author": "Fawwaz <isfawwaz@gmail.com>",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isfawwaz/twcc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/isfawwaz/twcc/issues"
+  },
+  "homepage": "https://github.com/isfawwaz/twcc#readme",
+  "dependencies": {
+    "chalk": "4.1.2",
+    "fs-extra": "^10.1.0",
+    "listr": "^0.14.3",
+    "path": "^0.12.7",
+    "tailwindcss": "^3.2.3",
+    "yargs": "^17.6.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "@commitlint/prompt": "^17.2.0",
+    "@isfawwaz/prettier-config": "^1.0.1",
+    "commitlint-config-squash-pr": "^1.1.0",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "xo": "^0.52.4"
+  },
+  "engines": {
+    "node": ">=16.17"
+  },
+  "prettier": "@isfawwaz/prettier-config",
+  "lint-staged": {
+    "*": "prettier --ignore-unknown --write",
+    "*.js": [
+      "eslint --fix",
+      "jest --bail --findRelatedTests --passWithNoTests"
+    ]
+  },
+  "jest": {
+    "testMatch": [
+      "**/tests/**/*.[jt]s?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "tests/create-tests.js",
+      "tests/test-cases.js"
+    ]
+  }
+}
