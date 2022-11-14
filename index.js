@@ -5,7 +5,7 @@ const { hideBin } = require('yargs/helpers');
 const runner = require('./src/runner');
 
 const argv = yargs(hideBin(process.argv))
-  .usage('Usage: $0 -config [relative_path] -destination [relative_path]')
+  .usage('Usage: $0 --config [relative_path] --destination [relative_path] --format [css|scss]')
   .option('config', {
     alias: 'c',
     describe: 'Tailwind config file path',
@@ -72,7 +72,8 @@ const argv = yargs(hideBin(process.argv))
     describe: 'File splitting',
     type: 'boolean' /* array | boolean | string */,
     boolean: false,
-    nargs: 1,
-  }).argv;
+  })
+  .example('$0 --config tailwind.config.js --destination style --format css')
+  .example('$0 -c tailwind.config.js -d style -f css --split').argv;
 
 runner(argv);
