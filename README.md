@@ -29,9 +29,119 @@
 
 </div>
 
+## Install
+
+```
+npm install -g twcc
+# or
+yarn global add twcc
+# or
+pnpm add -g twcc
+```
+
 ## Usage
 
 [\[Back to the Table of Contents\] ↑](#toc)
+
+```
+$ twcc --help
+  Usage: twcc --config [relative_path] --destination [relative_path] --format [css|scss]
+
+  Options:
+        --help                Show help                                  [boolean]
+        --version             Show version number                        [boolean]
+    -c, --config              Tailwind config file path        [string] [required]
+    -d, --destination         Path to save converted config file to, if split is
+                              true then this will be folder name
+                                                              [string] [required]
+    -f, --format              Format to generate
+                                      [string] [required] [choices: "css", "scss"]
+        --prefix              variable prefix                             [string]
+        --flat                Variable style (flat or nested map)        [boolean]
+        --quoted-keys         Should map keys be quoted                  [boolean]
+        --flatten-maps-after  After which level, should deeply nested maps be
+                              flattened out. Defaults to -1 (always)      [number]
+        --preserve-keys       Keys to preserve                             [array]
+        --only-include-keys   Keys to include exclusivly                   [array]
+        --split               File splitting                             [boolean]
+  Examples:
+    twcc --config tailwind.config.js --destination style --format css
+    twcc -c tailwind.config.js -d style -f css --split
+```
+
+## Config
+
+### -c, --config
+
+Type: `string`\
+Required: `true`
+
+Tailwind config file path.
+
+### -d, --destination
+
+Type: `string`\
+Required: `true`
+
+Path to save converted config file to, if split is true then this will be folder name.
+
+### -f, --format
+
+Type: `string`\
+Required: `true`\
+Choice: `css|scss`
+
+Format to generate file.
+
+### --prefix
+
+Type: `string`\
+Default: `null`
+
+Used for adding prefix for variable name. Example from `--color` to `--prefix-color`.
+
+### --flat
+
+Type: `boolean`\
+Default: `false`
+
+Variable style (flat or nested map).
+
+### --quoted-keys
+
+Type: `boolean`\
+Default: `false`
+
+Should map keys be quoted.
+
+### --flatten-maps-after
+
+Type: `boolean`\
+Default: `false`
+
+After which level, should deeply nested maps be flattened out. Defaults to -1 (always).
+
+### --preserve-keys
+
+Type: `string[]`\
+Default: `[]`
+
+Keys to preserve.
+
+### --only-include-keys
+
+Type: `string[]`\
+Default: `[]`\
+Example: `['backgroundColor']`
+
+Keys to include exclusivly.
+
+### --split
+
+Type: `boolean`\
+Default: `false`
+
+Enable exported config to be spliting into files.
 
 ## Contributors
 
