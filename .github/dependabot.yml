@@ -7,7 +7,7 @@ version: 2
 updates:
   - directory: /
     assignees:
-      - "r17x"
+      - 'isfawwaz'
     open-pull-requests-limit: 5
     package-ecosystem: npm
     rebase-strategy: auto
@@ -15,5 +15,5 @@ updates:
       interval: daily
     versioning-strategy: lockfile-only
     labels:
-      - "automerge"
-      - "dependencies"
+      - 'automerge'
+      - 'dependencies'
