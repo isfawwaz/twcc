@@ -44,7 +44,6 @@ yarn-error.log*
 
 ### OSX ###
 # General
-.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -71,3 +70,5 @@ Temporary Items
 .apdisk
 
 # End of https://www.toptal.com/developers/gitignore/api/osx
+
+.idea
