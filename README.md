@@ -89,7 +89,7 @@ Path to save converted config file to, if split is true then this will be folder
 
 Type: `string`\
 Required: `true`\
-Choice: `css|scss`
+Choice: `css|scss|sass`
 
 Format to generate file.
 
