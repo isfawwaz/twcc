@@ -1,6 +1,6 @@
 const Converter = require('./converter');
 
-class ScssConverter extends Converter {
+class SassConverter extends Converter {
   format = 'sass';
   prefixContent = '';
   suffixContent = '';
@@ -23,4 +23,4 @@ class ScssConverter extends Converter {
   }
 }
 
-module.exports = ScssConverter;
+module.exports = SassConverter;
