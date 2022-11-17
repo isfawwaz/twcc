@@ -25,7 +25,7 @@ describe('Sass converter', () => {
 
     converter = new SassConverter({
       config: resolveConfig(testConfig),
-      format: 'scss',
+      format: 'sass',
       flat: false,
     });
 
@@ -48,7 +48,7 @@ describe('Sass converter', () => {
     const converter = new SassConverter({
       config: resolveConfig(testConfig),
       prefix: 'tw',
-      format: 'scss',
+      format: 'sass',
     });
     expect(converter.convert()).toMatchSnapshot();
   });
