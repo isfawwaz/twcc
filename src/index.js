@@ -7,6 +7,7 @@ const chalk = require('chalk');
 const allowedFormatsMap = {
   css: converters.Css,
   scss: converters.Scss,
+  sass: converters.Sass,
 };
 
 /**
@@ -65,6 +66,7 @@ class ConvertTo {
    * @param {String} data
    * @param {String} destination
    * @param {String} format
+   * @param split
    * @private
    * @return {Promise}
    */
@@ -73,7 +75,8 @@ class ConvertTo {
     if (destination.endsWith(path.sep)) destination += 'tailwind-config';
     if (split) {
       const config = this.fileSplittingConfig();
-      const promise = new Promise(async (resolve, reject) => {
+      // asd
+      return new Promise(async (resolve, reject) => {
         try {
           const d = [];
           // write file
@@ -100,8 +103,6 @@ class ConvertTo {
           reject(e);
         }
       });
-      // asd
-      return promise;
     } else {
       let buffer = '';
       if (this.options.format !== 'json') {
