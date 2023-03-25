@@ -22,6 +22,7 @@ module.exports = {
           types: [{ type: 'refactor', section: 'Code Improvements', hidden: false }],
         },
         releaseRules: [
+          { type: 'build', release: false },
           { type: 'docs', release: false },
           { type: 'refactor', release: 'patch' },
           { type: 'chore', scope: 'deps', release: 'patch' },
