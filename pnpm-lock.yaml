@@ -38,7 +38,7 @@ devDependencies:
     version: 6.26.0
   babel-jest:
     specifier: ^29.3.1
-    version: 29.3.1(@babel/core@7.20.2)
+    version: 29.5.0(@babel/core@7.20.2)
   commitlint-config-squash-pr:
     specifier: ^1.1.0
     version: 1.1.0
@@ -873,29 +873,6 @@ packages:
       graceful-fs: 4.2.10
       jest-haste-map: 29.5.0
       slash: 3.0.0
-    dev: true
-
-  /@jest/transform@29.3.1:
-    resolution: {integrity: sha512-8wmCFBTVGYqFNLWfcOWoVuMuKYPUBTnTMDkdvFtAYELwDOl9RGwOsvQWGPFxDJ8AWY9xM/8xCXdqmPK3+Q5Lug==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    dependencies:
-      '@babel/core': 7.20.2
-      '@jest/types': 29.5.0
-      '@jridgewell/trace-mapping': 0.3.17
-      babel-plugin-istanbul: 6.1.1
-      chalk: 4.1.2
-      convert-source-map: 2.0.0
-      fast-json-stable-stringify: 2.1.0
-      graceful-fs: 4.2.10
-      jest-haste-map: 29.5.0
-      jest-regex-util: 29.4.3
-      jest-util: 29.5.0
-      micromatch: 4.0.5
-      pirates: 4.0.5
-      slash: 3.0.0
-      write-file-atomic: 4.0.2
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /@jest/transform@29.5.0:
@@ -1861,24 +1838,6 @@ packages:
       dequal: 2.0.3
     dev: true
 
-  /babel-jest@29.3.1(@babel/core@7.20.2):
-    resolution: {integrity: sha512-aard+xnMoxgjwV70t0L6wkW/3HQQtV+O0PEimxKgzNqCJnbYmroPojdP2tqKSOAt8QAKV/uSZU8851M7B5+fcA==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    peerDependencies:
-      '@babel/core': ^7.8.0
-    dependencies:
-      '@babel/core': 7.20.2
-      '@jest/transform': 29.3.1
-      '@types/babel__core': 7.1.20
-      babel-plugin-istanbul: 6.1.1
-      babel-preset-jest: 29.2.0(@babel/core@7.20.2)
-      chalk: 4.1.2
-      graceful-fs: 4.2.10
-      slash: 3.0.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /babel-jest@29.5.0(@babel/core@7.20.2):
     resolution: {integrity: sha512-mA4eCDh5mSo2EcA9xQjVTpmbbNk32Zb3Q3QFQsNhaK56Q+yoXowzFodLux30HRgyOho5rsQ6B0P9QpMkvvnJ0Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -1938,17 +1897,6 @@ packages:
       '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.20.2)
       '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.20.2)
       '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.20.2)
-    dev: true
-
-  /babel-preset-jest@29.2.0(@babel/core@7.20.2):
-    resolution: {integrity: sha512-z9JmMJppMxNv8N7fNRHvhMg9cvIkMxQBXgFkane3yKVEvEOP+kB50lk8DFRvF9PGqbyXxlmebKWhuDORO8RgdA==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-    dependencies:
-      '@babel/core': 7.20.2
-      babel-plugin-jest-hoist: 29.5.0
-      babel-preset-current-node-syntax: 1.0.1(@babel/core@7.20.2)
     dev: true
 
   /babel-preset-jest@29.5.0(@babel/core@7.20.2):
