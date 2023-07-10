@@ -39,7 +39,7 @@ devDependencies:
     version: 1.0.1
   all-contributors-cli:
     specifier: ^6.24.0
-    version: 6.26.0
+    version: 6.26.1
   babel-jest:
     specifier: ^29.3.1
     version: 29.3.1(@babel/core@7.20.2)
@@ -395,13 +395,6 @@ packages:
     dependencies:
       '@babel/core': 7.20.2
       '@babel/helper-plugin-utils': 7.20.2
-    dev: true
-
-  /@babel/runtime@7.20.1:
-    resolution: {integrity: sha512-mrzLkl6U9YLF8qpqI7TB82PESyEGjm/0Ly91jG575eVxMMlb8fYfOXFZIJ8XfLrJZQbm7dlKry2bJmXBUEkdFg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.13.11
     dev: true
 
   /@babel/runtime@7.22.5:
@@ -1655,12 +1648,12 @@ packages:
       uri-js: 4.4.1
     dev: true
 
-  /all-contributors-cli@6.26.0:
-    resolution: {integrity: sha512-HOMfawD0XyNbOvLUn7rOAP5N9RLnbH+Y/9/IoxwPzCmy6srHSFyRMwbpD0H7Tw+1QzdJT8RH7bTe1IZkPhF+NQ==}
+  /all-contributors-cli@6.26.1:
+    resolution: {integrity: sha512-Ymgo3FJACRBEd1eE653FD1J/+uD0kqpUNYfr9zNC1Qby0LgbhDBzB3EF6uvkAbYpycStkk41J+0oo37Lc02yEw==}
     engines: {node: '>=4'}
     hasBin: true
     dependencies:
-      '@babel/runtime': 7.20.1
+      '@babel/runtime': 7.22.5
       async: 3.2.4
       chalk: 4.1.2
       didyoumean: 1.2.2
