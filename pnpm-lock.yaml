@@ -33,7 +33,7 @@ devDependencies:
     version: 17.7.0
   '@commitlint/prompt':
     specifier: ^17.2.0
-    version: 17.7.2
+    version: 17.8.0
   '@isfawwaz/prettier-config':
     specifier: ^1.0.1
     version: 1.0.1
@@ -545,8 +545,8 @@ packages:
       - '@swc/wasm'
     dev: true
 
-  /@commitlint/load@17.7.2:
-    resolution: {integrity: sha512-XA7WTnsjHZ4YH6ZYsrnxgLdXzriwMMq+utZUET6spbOEEIPBCDLdOQXS26P+v3TTO4hUHOEhzUquaBv3jbBixw==}
+  /@commitlint/load@17.8.0:
+    resolution: {integrity: sha512-9VnGXYJCP4tXmR4YrwP8n5oX6T5ZsHfPQq6WuUQOvAI+QsDQMaTGgTRXr7us+xsjz+b+mMBSagogqfUx2aixyw==}
     engines: {node: '>=v14'}
     dependencies:
       '@commitlint/config-validator': 17.6.7
@@ -582,12 +582,12 @@ packages:
       conventional-commits-parser: 4.0.0
     dev: true
 
-  /@commitlint/prompt@17.7.2:
-    resolution: {integrity: sha512-DcN55b2Oi906a2pGDjjmR+ymZMvrwvxhnlr7Bu6FBaemXJlLicBOYXGz/cXIo9iExlwowbfCOuenBHvfXdDK9g==}
+  /@commitlint/prompt@17.8.0:
+    resolution: {integrity: sha512-tj4WotkHvSe95to1nDyOfVUl7+U3ThyrjNvAG7HEkBeGV8U8Oi9COGuVwMDUcfN+QRfheCyKnnJqoUhbkyG0DA==}
     engines: {node: '>=v14'}
     dependencies:
       '@commitlint/ensure': 17.6.7
-      '@commitlint/load': 17.7.2
+      '@commitlint/load': 17.8.0
       '@commitlint/types': 17.4.4
       chalk: 4.1.2
       inquirer: 6.5.2
