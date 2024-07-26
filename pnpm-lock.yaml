@@ -22,7 +22,7 @@ importers:
         version: 0.12.7
       tailwindcss:
         specifier: ^3.2.3
-        version: 3.4.6(ts-node@10.9.1(@types/node@20.5.1)(typescript@4.8.4))
+        version: 3.4.7(ts-node@10.9.1(@types/node@20.5.1)(typescript@4.8.4))
       yargs:
         specifier: ^17.6.2
         version: 17.7.2
@@ -3357,8 +3357,8 @@ packages:
     resolution: {integrity: sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==}
     engines: {node: '>=0.10.0'}
 
-  tailwindcss@3.4.6:
-    resolution: {integrity: sha512-1uRHzPB+Vzu57ocybfZ4jh5Q3SdlH7XW23J5sQoM9LhE9eIOlzxer/3XPSsycvih3rboRsvt0QCmzSrqyOYUIA==}
+  tailwindcss@3.4.7:
+    resolution: {integrity: sha512-rxWZbe87YJb4OcSopb7up2Ba4U82BoiSGUdoDr3Ydrg9ckxFS/YWsvhN323GMcddgU65QRy7JndC7ahhInhvlQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -7519,7 +7519,7 @@ snapshots:
 
   symbol-observable@1.2.0: {}
 
-  tailwindcss@3.4.6(ts-node@10.9.1(@types/node@20.5.1)(typescript@4.8.4)):
+  tailwindcss@3.4.7(ts-node@10.9.1(@types/node@20.5.1)(typescript@4.8.4)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
