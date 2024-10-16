@@ -3143,22 +3143,12 @@ packages:
     resolution: {integrity: sha512-0zTyLGyDJYd/MBxG1AhJkKa6fpEBds4OQO2ut0w7OYG+ZGhGea09lijvzsqegYSik88zc7cUtIlnnO+/BvD6gQ==}
     engines: {node: '>= 10.13.0'}
 
-  semver@5.7.1:
-    resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
+  semver@5.7.2:
+    resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
     hasBin: true
 
   semver@6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
-    hasBin: true
-
-  semver@7.3.8:
-    resolution: {integrity: sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==}
-    engines: {node: '>=10'}
-    hasBin: true
-
-  semver@7.5.0:
-    resolution: {integrity: sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==}
-    engines: {node: '>=10'}
     hasBin: true
 
   semver@7.5.4:
@@ -5270,7 +5260,7 @@ snapshots:
       eslint-plugin-react-hooks: 4.6.0(eslint@8.57.1)
       eslint-plugin-testing-library: 5.11.0(eslint@8.57.1)(typescript@4.8.4)
       read-pkg-up: 7.0.1
-      semver: 7.5.0
+      semver: 7.5.4
     optionalDependencies:
       typescript: 4.8.4
     transitivePeerDependencies:
@@ -5327,7 +5317,7 @@ snapshots:
       is-regex: 1.1.4
       lodash: 4.17.21
       resolve: 1.22.2
-      semver: 5.7.1
+      semver: 5.7.2
       webpack: 5.86.0
     transitivePeerDependencies:
       - supports-color
@@ -6870,7 +6860,7 @@ snapshots:
     dependencies:
       hosted-git-info: 2.8.9
       resolve: 1.22.2
-      semver: 5.7.1
+      semver: 5.7.2
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@3.0.3:
@@ -7305,17 +7295,9 @@ snapshots:
       ajv: 6.12.6
       ajv-keywords: 3.5.2(ajv@6.12.6)
 
-  semver@5.7.1: {}
+  semver@5.7.2: {}
 
   semver@6.3.0: {}
-
-  semver@7.3.8:
-    dependencies:
-      lru-cache: 6.0.0
-
-  semver@7.5.0:
-    dependencies:
-      lru-cache: 6.0.0
 
   semver@7.5.4:
     dependencies:
@@ -7852,7 +7834,7 @@ snapshots:
       micromatch: 4.0.5
       open-editor: 4.0.0
       prettier: 2.8.8
-      semver: 7.3.8
+      semver: 7.5.4
       slash: 4.0.0
       to-absolute-glob: 2.0.2
       typescript: 4.8.4
